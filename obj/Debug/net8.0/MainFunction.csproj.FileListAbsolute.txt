@@ -1,0 +1,14 @@
+C:\Users\Bruno\DndSoftware\obj\Debug\net8.0\MainFunction.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Bruno\DndSoftware\obj\Debug\net8.0\MainFunction.AssemblyInfoInputs.cache
+C:\Users\Bruno\DndSoftware\obj\Debug\net8.0\MainFunction.AssemblyInfo.cs
+C:\Users\Bruno\DndSoftware\obj\Debug\net8.0\MainFunction.csproj.CoreCompileInputs.cache
+C:\Users\Bruno\DndSoftware\bin\Debug\net8.0\MainFunction.exe
+C:\Users\Bruno\DndSoftware\bin\Debug\net8.0\MainFunction.deps.json
+C:\Users\Bruno\DndSoftware\bin\Debug\net8.0\MainFunction.runtimeconfig.json
+C:\Users\Bruno\DndSoftware\bin\Debug\net8.0\MainFunction.dll
+C:\Users\Bruno\DndSoftware\bin\Debug\net8.0\MainFunction.pdb
+C:\Users\Bruno\DndSoftware\obj\Debug\net8.0\MainFunction.dll
+C:\Users\Bruno\DndSoftware\obj\Debug\net8.0\refint\MainFunction.dll
+C:\Users\Bruno\DndSoftware\obj\Debug\net8.0\MainFunction.pdb
+C:\Users\Bruno\DndSoftware\obj\Debug\net8.0\MainFunction.genruntimeconfig.cache
+C:\Users\Bruno\DndSoftware\obj\Debug\net8.0\ref\MainFunction.dll
