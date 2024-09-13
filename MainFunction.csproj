@@ -1,4 +1,4 @@
-<Project Sdk = "Microsoft.Net.Sdk">
+<Project Sdk="Microsoft.Net.Sdk">
 
 <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -6,4 +6,15 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 </PropertyGroup>
+
+<ItemGroup>
+  <PackageReference Include="MySql.Data" Version="9.0.0" />
+  <PackageReference Include="System.Text.Json" Version="8.0.4" />
+</ItemGroup>
+
+<ItemGroup>
+  <Reference Include="MySql.Data">
+    <HintPath>..\..\..\Program Files (x86)\MySQL\MySQL Connector NET 9.0\MySql.Data.dll</HintPath>
+  </Reference>
+</ItemGroup>
 </Project>
