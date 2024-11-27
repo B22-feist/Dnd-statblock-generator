@@ -3,12 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\Bruno\\DndSoftware\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6EE59371-F214-4E4C-9D83-9464998D0316}|MainFunction.csproj|c:\\users\\bruno\\dndsoftware\\mysql connection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6EE59371-F214-4E4C-9D83-9464998D0316}|MainFunction.csproj|solutionrelative:mysql connection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6EE59371-F214-4E4C-9D83-9464998D0316}|MainFunction.csproj|c:\\users\\bruno\\dndsoftware\\mainfunction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6EE59371-F214-4E4C-9D83-9464998D0316}|MainFunction.csproj|solutionrelative:mainfunction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6EE59371-F214-4E4C-9D83-9464998D0316}|MainFunction.csproj|c:\\users\\bruno\\dndsoftware\\statblocks\\statblock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6EE59371-F214-4E4C-9D83-9464998D0316}|MainFunction.csproj|solutionrelative:statblocks\\statblock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -27,27 +23,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "MySQl Connection.cs",
-              "DocumentMoniker": "C:\\Users\\Bruno\\DndSoftware\\MySQl Connection.cs",
-              "RelativeDocumentMoniker": "MySQl Connection.cs",
-              "ToolTip": "C:\\Users\\Bruno\\DndSoftware\\MySQl Connection.cs",
-              "RelativeToolTip": "MySQl Connection.cs",
-              "ViewState": "AQIAACIAAAAAAAAAAAAQwEQAAAAMAAAA",
+              "Title": "StatBlock.cs",
+              "DocumentMoniker": "C:\\Users\\Bruno\\DndSoftware\\StatBlocks\\StatBlock.cs",
+              "RelativeDocumentMoniker": "StatBlocks\\StatBlock.cs",
+              "ToolTip": "C:\\Users\\Bruno\\DndSoftware\\StatBlocks\\StatBlock.cs",
+              "RelativeToolTip": "StatBlocks\\StatBlock.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAAwEQAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-07T22:07:07.804Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "MainFunction.cs",
-              "DocumentMoniker": "C:\\Users\\Bruno\\DndSoftware\\MainFunction.cs",
-              "RelativeDocumentMoniker": "MainFunction.cs",
-              "ToolTip": "C:\\Users\\Bruno\\DndSoftware\\MainFunction.cs",
-              "RelativeToolTip": "MainFunction.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAcAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-06T22:52:18.876Z",
+              "WhenOpened": "2024-10-30T20:10:26.288Z",
               "EditorCaption": ""
             }
           ]

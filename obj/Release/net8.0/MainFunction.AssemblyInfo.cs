@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MainFunction")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4c598aca3ef92926e41dd62adb5abb633a0e94df")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+14d4294dc077e50fe30c47c307e572fcc3b31a9d")]
 [assembly: System.Reflection.AssemblyProductAttribute("MainFunction")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MainFunction")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
