@@ -1,8 +1,8 @@
 //using dbStuff;
-
 using System.Data;
 using MainFunction.Database;
 using MainFunction.MathsFunctions;
+using MainFunction.StatBlocks.DndClasses.GeneralClassMethods;
 
 //this namespace is used to display information
 namespace MainFunction {
@@ -10,18 +10,16 @@ namespace MainFunction {
 	{
 		static void Main()
 		{
-			DiceRoller Testing = new();
-			DbConnection MainFunctionTesting = new();
+			StatBlockClass Testing = new StatBlockClass();
+			
+			List<int> inputList = [5];
+			List<string> Classinput = ["fighter"];
 
-			DataTable SqlOutputs = MainFunctionTesting.Dboutput("dndspells");
+			Dictionary<String, object> TestingDic = Testing.StatBlockGeneratorAbilityScoresModifiers(inputList, "HalfElf", Classinput);
 
-
-			foreach ( DataRow X in SqlOutputs.Rows)
+			foreach (var VARIABLE in TestingDic)
 			{
-				foreach (var Item in X.ItemArray)
-				{
-					Console.WriteLine(Item);
-				}
+				Console.WriteLine(VARIABLE);
 			}
 		}
 	}
