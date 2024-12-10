@@ -1,7 +1,6 @@
 ﻿using System.Collections.Immutable;
 using MainFunction.MathsFunctions;
 
-
 // This namespace is used to handle statblocks
 namespace MainFunction.StatBlocks.DndClasses.GeneralClassMethods
 {
@@ -9,7 +8,8 @@ namespace MainFunction.StatBlocks.DndClasses.GeneralClassMethods
 	class StatBlockClass
 	{
 		// stat dictionary contains the key value pairs of dnd stats i.e 1 become -5, 20 becomes 5.
-		private readonly Dictionary<int, int> _checkStatDictionary = new Dictionary<int, int>() {
+		private readonly Dictionary<int, int> _checkStatDictionary = new Dictionary<int, int>()
+		{
 			{ 1, -5 },
 			{ 2, -4 },
 			{ 3, -4 },
@@ -131,53 +131,53 @@ namespace MainFunction.StatBlocks.DndClasses.GeneralClassMethods
 			bool ExitWhileLoop = false;
 			while (true)
 			{
-				switch (race)
+				switch (race.ToLower())
 				{
-					case "HillDwarf":
+					case "hilldwarf":
 						RaceAbilityScoreModifiersReturnDictionary["con"] = 2;
 						RaceAbilityScoreModifiersReturnDictionary["wis"] = 1;
 						ExitWhileLoop = true;
 						break;
 
-					case "MountainDwarf":
+					case "mountaindwarf":
 
 						RaceAbilityScoreModifiersReturnDictionary["str"] = 2;
 						RaceAbilityScoreModifiersReturnDictionary["con"] = 2;
 						ExitWhileLoop = true;
 						break;
 
-					case "HighElf":
+					case "highelf":
 						RaceAbilityScoreModifiersReturnDictionary["dex"] = 2;
 						RaceAbilityScoreModifiersReturnDictionary["int"] = 1;
 						ExitWhileLoop = true;
 						break;
 
-					case "WoofElf":
+					case "woofelf":
 						RaceAbilityScoreModifiersReturnDictionary["dex"] = 2;
 						RaceAbilityScoreModifiersReturnDictionary["wis"] = 1;
 						ExitWhileLoop = true;
 						break;
 
-					case "DarkElf":
+					case "darkelf":
 
 						RaceAbilityScoreModifiersReturnDictionary["dex"] = 2;
 						RaceAbilityScoreModifiersReturnDictionary["chr"] = 1;
 						ExitWhileLoop = true;
 						break;
 
-					case "LightFootHalfing":
+					case "lightfoothalfing":
 						RaceAbilityScoreModifiersReturnDictionary["dex"] = 2;
 						RaceAbilityScoreModifiersReturnDictionary["chr"] = 1;
 						ExitWhileLoop = true;
 						break;
 
-					case "StoutHalfing":
+					case "stouthalfing":
 						RaceAbilityScoreModifiersReturnDictionary["con"] = 1;
 						RaceAbilityScoreModifiersReturnDictionary["dex"] = 2;
 						ExitWhileLoop = true;
 						break;
 
-					case "NormalHuman":
+					case "normalhuman":
 						RaceAbilityScoreModifiersReturnDictionary["str"] = 1;
 						RaceAbilityScoreModifiersReturnDictionary["con"] = 1;
 						RaceAbilityScoreModifiersReturnDictionary["dex"] = 1;
@@ -187,7 +187,7 @@ namespace MainFunction.StatBlocks.DndClasses.GeneralClassMethods
 						ExitWhileLoop = true;
 						break;
 
-					case "VariantHuman":
+					case "varianthuman":
 						int VariantHumanCounter = 0;
 
 						while (VariantHumanCounter < 2)
@@ -195,7 +195,7 @@ namespace MainFunction.StatBlocks.DndClasses.GeneralClassMethods
 							Console.WriteLine("pick an ability score to improve by one \n str,con,dex,int,wis,chr");
 							string VariantHumanStatIncrease = Console.ReadLine();
 
-							if (RaceAbilityScoreModifiersReturnDictionary.ContainsKey(VariantHumanStatIncrease) )
+							if (RaceAbilityScoreModifiersReturnDictionary.ContainsKey(VariantHumanStatIncrease))
 							{
 								RaceAbilityScoreModifiersReturnDictionary[VariantHumanStatIncrease]++;
 								VariantHumanCounter++;
@@ -206,29 +206,29 @@ namespace MainFunction.StatBlocks.DndClasses.GeneralClassMethods
 								Console.WriteLine("no such ability score increase");
 							}
 						}
-						
+
 						ExitWhileLoop = true;
 						return RaceAbilityScoreModifiersReturnDictionary;
 
-					case "Dragonborn":
+					case "dragonborn":
 						RaceAbilityScoreModifiersReturnDictionary["str"] = 2;
 						RaceAbilityScoreModifiersReturnDictionary["chr"] = 1;
 						ExitWhileLoop = true;
 						break;
 
-					case "ForestGnome":
+					case "forestgnome":
 						RaceAbilityScoreModifiersReturnDictionary["dex"] = 1;
 						RaceAbilityScoreModifiersReturnDictionary["int"] = 2;
 						ExitWhileLoop = true;
 						break;
 
-					case "RockGnome":
+					case "rockgnome":
 						RaceAbilityScoreModifiersReturnDictionary["con"] = 1;
 						RaceAbilityScoreModifiersReturnDictionary["int"] = 2;
 						ExitWhileLoop = true;
 						break;
 
-					case "HalfElf":
+					case "halfelf":
 						int HalfElfCounter = 0;
 
 						RaceAbilityScoreModifiersReturnDictionary["chr"] = 2;
@@ -249,21 +249,25 @@ namespace MainFunction.StatBlocks.DndClasses.GeneralClassMethods
 								HalfElfCounter++;
 							}
 						}
-						
+
 						ExitWhileLoop = true;
 						break;
 
 
-					case "HalfOrc":
+					case "halforc":
 						RaceAbilityScoreModifiersReturnDictionary["str"] = 2;
 						RaceAbilityScoreModifiersReturnDictionary["con"] = 1;
 						ExitWhileLoop = true;
 						break;
 
-					case "Tiefling":
+					case "tiefling":
 						RaceAbilityScoreModifiersReturnDictionary["int"] = 1;
 						RaceAbilityScoreModifiersReturnDictionary["chr"] = 2;
 						ExitWhileLoop = true;
+						break;
+					
+					default:
+						Console.WriteLine("that's not a valid race");
 						break;
 				}
 
@@ -272,8 +276,8 @@ namespace MainFunction.StatBlocks.DndClasses.GeneralClassMethods
 					break;
 				}
 			}
-			
-			
+
+
 			return RaceAbilityScoreModifiersReturnDictionary;
 		}
 
@@ -290,7 +294,7 @@ namespace MainFunction.StatBlocks.DndClasses.GeneralClassMethods
 			AbilityScores.Sort();
 
 			Console.WriteLine("Here are the ability scores:");
-			
+
 			foreach (int AbilityScoresScores in AbilityScores)
 			{
 				Console.WriteLine(AbilityScoresScores);
@@ -303,12 +307,13 @@ namespace MainFunction.StatBlocks.DndClasses.GeneralClassMethods
 			{
 				while (true)
 				{
-					Console.WriteLine($"enter the ability score you wish to use for {AbilityScoreNames[UserInputCounterAbilitscores]}");
-					
+					Console.WriteLine(
+						$"enter the ability score you wish to use for {AbilityScoreNames[UserInputCounterAbilitscores]}");
+
 					String StringAbilityScoreInput = Console.ReadLine() ?? string.Empty;
-					
+
 					int InputAbilityScore = int.Parse(StringAbilityScoreInput);
-					
+
 					if (AbilityScores.Contains(InputAbilityScore))
 					{
 						ReturnAbilityScores.Add(InputAbilityScore);
@@ -322,57 +327,82 @@ namespace MainFunction.StatBlocks.DndClasses.GeneralClassMethods
 					}
 				}
 			}
-			
+
+			ClassAbilityScoreImprovements(level, dndclass, ReturnAbilityScores);
 			
 			return ReturnAbilityScores;
 		}
 
+		/*here the code checks if you are a fighter, a rouge or any other dnd class
+		 it then checks if you are at a level to increase you ability score
+		 the program then checks if increasing the stat would increase the stat above 20
+		 and if so, doesn't let them
+		 if you would increase the stat above 20, then the stat gets increased*/
 		private List<int> ClassAbilityScoreImprovements(List<int> level, List<string> dndclass, List<int> abilityScores)
+		{
+			for (int DndClassLoop = 0; DndClassLoop < dndclass.Count; DndClassLoop++)
+			{
+				if (dndclass[DndClassLoop].ToLower() == "fighter")
+				{
+					List<int> FighterAbilityScoreImprovementLevels = [4, 6, 8, 12, 16, 19];
+					abilityScores = StatIncreaseClassAbilityScores(level[DndClassLoop], abilityScores,
+						FighterAbilityScoreImprovementLevels);
+				}
+				
+				else if (dndclass[DndClassLoop].ToLower() == "rouge")
+				{
+					List<int> RougeAbilityScoreImprovementLevels = [4, 8, 10, 12, 16, 19];
+					abilityScores = StatIncreaseClassAbilityScores(level[DndClassLoop], abilityScores,
+						RougeAbilityScoreImprovementLevels);
+				}
+
+				else
+				{
+					List<int> NormalAbilityScoreImprovementLevels = [4, 8, 12, 16, 19];
+					abilityScores = StatIncreaseClassAbilityScores(level[DndClassLoop],  abilityScores,
+						NormalAbilityScoreImprovementLevels);
+				}
+			}
+
+			return abilityScores;
+		}
+
+		private List<int> StatIncreaseClassAbilityScores(int level,  List<int> abilityScores, List<int> abilityScoresImprovementLevels)
 		{
 			Dictionary<string, int> AbilityScoresLocations = new()
 			{
-				{"str", 0},
-				{"con", 1},
-				{"dex", 2},
-				{"int", 3},
-				{"wis", 4},
-				{"chr", 5}
+				{ "str", 0 },
+				{ "con", 1 },
+				{ "dex", 2 },
+				{ "int", 3 },
+				{ "wis", 4 },
+				{ "chr", 5 }
 			};
-			List<int> NormalAbilityScoreImprovementLevels = [4, 8, 12, 16, 19];
 			
-			List<int> RougeAbilityScoreImprovementLevels = [4,8,10,12,16,19];
-			
-			List<int> FighterAbilityScoreImprovementLevels = [4,6,8,12,16,19];
-
-			for (int DndClassLoop = 0; DndClassLoop < dndclass.Count; DndClassLoop++)
+			for (int AblityScoreLevel = 1; AblityScoreLevel <= level; AblityScoreLevel++)
 			{
-				if (dndclass[DndClassLoop] =="fighter") 
+				if (abilityScoresImprovementLevels.Contains(AblityScoreLevel))
 				{
-					for (int FighterAblityScoreLevel = 0; FighterAblityScoreLevel < level[DndClassLoop]; FighterAblityScoreLevel++)
+					for (int AbilityScoreRepeats = 0; AbilityScoreRepeats < 2; AbilityScoreRepeats++)
 					{
-						if (FighterAbilityScoreImprovementLevels.Contains(FighterAblityScoreLevel))
+						Console.WriteLine("which stat would you like to improve?");
+						String StringAbilityScoreStatIncrease = Console.ReadLine()?.ToLower() ?? string.Empty;
+
+						if (AbilityScoresLocations.ContainsKey(StringAbilityScoreStatIncrease))
 						{
-							Console.WriteLine("which stat would you like to improve?");
-							String StringAbilityScoreStatIncrease = Console.ReadLine() ?? string.Empty;
-
-							if (AbilityScoresLocations.ContainsKey(StringAbilityScoreStatIncrease.ToLower()))
+							if (abilityScores[AbilityScoresLocations[StringAbilityScoreStatIncrease]]++ >= 20)
 							{
-								if (abilityScores[AbilityScoresLocations[StringAbilityScoreStatIncrease]]++ >= 20)
-								{
-									Console.WriteLine($"that would increase{StringAbilityScoreStatIncrease} past 20 which isn't allowed");
-									FighterAblityScoreLevel--;
-								}
-
-								else
-								{
-									abilityScores[AbilityScoresLocations[StringAbilityScoreStatIncrease]]++;
-								}
+								Console.WriteLine(
+									$"that would increase{StringAbilityScoreStatIncrease} past 20 which isn't allowed");
+								AblityScoreLevel--;
+								abilityScores[AbilityScoresLocations[StringAbilityScoreStatIncrease]]--;
 							}
 							
 						}
 					}
 				}
 			}
+
 			return abilityScores;
 		}
 	}

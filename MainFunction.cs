@@ -12,10 +12,10 @@ namespace MainFunction {
 		{
 			StatBlockClass Testing = new StatBlockClass();
 			
-			List<int> inputList = [5];
-			List<string> Classinput = ["fighter"];
+			List<int> inputList = [8, 10];
+			List<string> Classinput = ["bard", "rouge"];
 
-			Dictionary<String, object> TestingDic = Testing.StatBlockGeneratorAbilityScoresModifiers(inputList, "HalfElf", Classinput);
+			Dictionary<String, object> TestingDic = Testing.StatBlockGeneratorAbilityScoresModifiers(inputList, "HalfOrc", Classinput);
 
 			foreach (var VARIABLE in TestingDic)
 			{
