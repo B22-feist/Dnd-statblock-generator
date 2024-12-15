@@ -5,7 +5,7 @@ using MainFunction.MathsFunctions;
 namespace MainFunction.StatBlocks.DndClasses.GeneralClassMethods
 {
 	//here we initialize the stat blocks through either database requests, or through users making new characters.
-	class StatBlockClass
+	class AbilityScoreClass
 	{
 		// stat dictionary contains the key value pairs of dnd stats i.e 1 become -5, 20 becomes 5.
 		private readonly Dictionary<int, int> _checkStatDictionary = new Dictionary<int, int>()

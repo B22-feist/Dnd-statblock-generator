@@ -10,7 +10,7 @@ namespace MainFunction {
 	{
 		static void Main()
 		{
-			StatBlockClass Testing = new StatBlockClass();
+			AbilityScoreClass Testing = new AbilityScoreClass();
 			
 			List<int> inputList = [8, 10];
 			List<string> Classinput = ["bard", "rouge"];
