@@ -101,4 +101,80 @@ public class StatblockProfenciesClass
 
 		return SubraceSkills;
 	}
+
+	private List<string> BackGroundSkills(string background)
+	{
+		List<string> BackGroundSkills = new();
+
+		switch (background.ToLower())
+		{
+			case "acolyte":
+				BackGroundSkills.Add("insight");
+				BackGroundSkills.Add("religion");
+				break;
+			
+			case "charlatan":
+				BackGroundSkills.Add("deception");
+				BackGroundSkills.Add("sleight of hand");
+				break;
+			
+			case "criminal":
+				BackGroundSkills.Add("deception");
+				BackGroundSkills.Add("stealth");
+				break;
+			
+			case "entertainer":
+				BackGroundSkills.Add("acrobatics");
+				BackGroundSkills.Add("performance");
+				break;
+			
+			case "folk hero":
+				BackGroundSkills.Add("animal handling");
+				BackGroundSkills.Add("survival");
+				break;
+			
+			case "guild artisan":
+				BackGroundSkills.Add("insight");
+				BackGroundSkills.Add("persuasion");
+				break;
+			
+			case "hermit":
+				BackGroundSkills.Add("medicine");
+				BackGroundSkills.Add("religion");
+				break;
+			
+			case "noble":
+				BackGroundSkills.Add("history");
+				BackGroundSkills.Add("persuasion");
+				break;
+			
+			case "outlander":
+				BackGroundSkills.Add("athletics");
+				BackGroundSkills.Add("survival");
+				break;
+			
+			case "sage":
+				BackGroundSkills.Add("arcana");
+				BackGroundSkills.Add("history");
+				break;
+			
+			case "sailor":
+				BackGroundSkills.Add("athletics");
+				BackGroundSkills.Add("perception");
+				break;
+			
+			case "soldier":
+				BackGroundSkills.Add("athletics");
+				BackGroundSkills.Add("intimidation");
+				break;
+			
+			case "urchin":
+				BackGroundSkills.Add("sleight of hand");
+				BackGroundSkills.Add("stealth");
+				break;
+		}
+
+		return BackGroundSkills;
+	}
+	
 }
