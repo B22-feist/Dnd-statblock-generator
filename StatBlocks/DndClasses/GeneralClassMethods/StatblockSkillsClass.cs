@@ -240,23 +240,9 @@ public class StatblockProfenciesClass
 					Console.WriteLine(BarbarianSkillsPrint);
 				}
 
-				for (int BarbarianskillsCounter = 0; BarbarianskillsCounter < 4; BarbarianskillsCounter++)
+				foreach (string ClassSkillsReturnString in ClassSkillsReturn(4, BarbarianSkills, ListSkills ))
 				{
-					string BarbarianSkillsUserInput = Console.ReadLine() ?? string.Empty;
-
-					if (Skills.Contains(BarbarianSkillsUserInput?.ToLower() ?? string.Empty))
-					{
-						if (ListSkills.Contains(BarbarianSkillsUserInput.ToLower()))
-						{
-							BarbarianskillsCounter--;
-							Console.WriteLine("You already have that skill, enter another skill");
-						}
-
-						else
-						{
-							ClassSkillsList.Add(BarbarianSkillsUserInput.ToLower());
-						}
-					}
+					ListSkills.Add(ClassSkillsReturnString);
 				}
 
 				break;
@@ -275,17 +261,10 @@ public class StatblockProfenciesClass
 					Console.WriteLine(BardSkillsPrint);
 				}
 
-				for (int BardnskillsCounter = 0; BardnskillsCounter < 3; BardnskillsCounter++)
+				foreach (string ClassSkillsReturnString in ClassSkillsReturn(3,BardSkills, ListSkills ))
 				{
-
-					string BarbarianSkillsUserInput = Console.ReadLine() ?? string.Empty;
-
-					if (BardSkills.Contains(BarbarianSkillsUserInput.ToLower()))
-					{
-						ClassSkillsList.Add(BarbarianSkillsUserInput);
-					}
+					ListSkills.Add(ClassSkillsReturnString);
 				}
-
 				break;
 
 			case "cleric":
@@ -299,15 +278,9 @@ public class StatblockProfenciesClass
 					Console.WriteLine(ClericSkillsPrint);
 				}
 
-				for (int ClericSkillsCounter = 0; ClericSkillsCounter < 2; ClericSkillsCounter++)
+				foreach (string ClassSkillsReturnString in ClassSkillsReturn(2, ClericSkills, ListSkills ))
 				{
-
-					string ClericSkillsUserInput = Console.ReadLine() ?? string.Empty;
-
-					if (ClericSkills.Contains(ClericSkillsUserInput.ToLower()))
-					{
-						ClassSkillsList.Add(ClericSkillsUserInput);
-					}
+					ListSkills.Add(ClassSkillsReturnString);
 				}
 
 				break;
@@ -323,15 +296,9 @@ public class StatblockProfenciesClass
 					Console.WriteLine(DruidSkillsPrint);
 				}
 
-				for (int DruidskillsCounter = 0; DruidskillsCounter < 2; DruidskillsCounter++)
+				foreach (string ClassSkillsReturnString in ClassSkillsReturn(2, DruidSkills, ListSkills ))
 				{
-
-					string DruidSkillsUserInput = Console.ReadLine() ?? string.Empty;
-
-					if (DruidSkills.Contains(DruidSkillsUserInput.ToLower()))
-					{
-						ClassSkillsList.Add(DruidSkillsUserInput);
-					}
+					ListSkills.Add(ClassSkillsReturnString);
 				}
 
 				break;
@@ -348,15 +315,9 @@ public class StatblockProfenciesClass
 					Console.WriteLine(FighterSkillsPrint);
 				}
 
-				for (int FighterskillsCounter = 0; FighterskillsCounter < 2; FighterskillsCounter++)
+				foreach (string ClassSkillsReturnString in ClassSkillsReturn(2, FighterSkills, ListSkills ))
 				{
-
-					string FighterSkillsUserInput = Console.ReadLine() ?? string.Empty;
-
-					if (FighterSkills.Contains(FighterSkillsUserInput.ToLower()))
-					{
-						ClassSkillsList.Add(FighterSkillsUserInput);
-					}
+					ListSkills.Add(ClassSkillsReturnString);
 				}
 
 				break;
@@ -372,15 +333,9 @@ public class StatblockProfenciesClass
 					Console.WriteLine(MonkSkillsPrint);
 				}
 
-				for (int MonkskillsCounter = 0; MonkskillsCounter < 4; MonkskillsCounter++)
+				foreach (string ClassSkillsReturnString in ClassSkillsReturn(2, MonkSkills, ListSkills ))
 				{
-
-					string MonkSkillsUserInput = Console.ReadLine() ?? string.Empty;
-
-					if (MonkSkills.Contains(MonkSkillsUserInput.ToLower()))
-					{
-						ClassSkillsList.Add(MonkSkillsUserInput);
-					}
+					ListSkills.Add(ClassSkillsReturnString);
 				}
 
 				break;
@@ -396,15 +351,9 @@ public class StatblockProfenciesClass
 					Console.WriteLine(PaladinSkillsPrint);
 				}
 
-				for (int PaladinskillsCounter = 0; PaladinskillsCounter < 2; PaladinskillsCounter++)
+				foreach (string ClassSkillsReturnString in ClassSkillsReturn(2, PaladinSkills, ListSkills ))
 				{
-
-					string PaladinSkillsUserInput = Console.ReadLine() ?? string.Empty;
-
-					if (PaladinSkills.Contains(PaladinSkillsUserInput.ToLower()))
-					{
-						ClassSkillsList.Add(PaladinSkillsUserInput);
-					}
+					ListSkills.Add(ClassSkillsReturnString);
 				}
 
 				break;
@@ -421,15 +370,9 @@ public class StatblockProfenciesClass
 					Console.WriteLine(RangerSkillsPrint);
 				}
 
-				for (int RangerskillsCounter = 0; RangerskillsCounter < 3; RangerskillsCounter++)
+				foreach (string ClassSkillsReturnString in ClassSkillsReturn(3, RangerSkills, ListSkills ))
 				{
-
-					string RangerSkillsUserInput = Console.ReadLine() ?? string.Empty;
-
-					if (RangerSkills.Contains(RangerSkillsUserInput.ToLower()))
-					{
-						ClassSkillsList.Add(RangerSkillsUserInput);
-					}
+					ListSkills.Add(ClassSkillsReturnString);
 				}
 
 				break;
@@ -446,15 +389,9 @@ public class StatblockProfenciesClass
 					Console.WriteLine(RogueSkillsPrint);
 				}
 
-				for (int RogueskillsCounter = 0; RogueskillsCounter < 4; RogueskillsCounter++)
+				foreach (string ClassSkillsReturnString in ClassSkillsReturn(4, RogueSkills, ListSkills ))
 				{
-
-					string BarbarianSkillsUserInput = Console.ReadLine() ?? string.Empty;
-
-					if (RogueSkills.Contains(BarbarianSkillsUserInput.ToLower()))
-					{
-						ClassSkillsList.Add(BarbarianSkillsUserInput);
-					}
+					ListSkills.Add(ClassSkillsReturnString);
 				}
 
 				break;
@@ -470,15 +407,9 @@ public class StatblockProfenciesClass
 					Console.WriteLine(SorcererSkillsPrint);
 				}
 
-				for (int SorcererskillsCounter = 0; SorcererskillsCounter < 2; SorcererskillsCounter++)
+				foreach (string ClassSkillsReturnString in ClassSkillsReturn(2, SorcererSkills, ListSkills ))
 				{
-
-					string SorcererSkillsUserInput = Console.ReadLine() ?? string.Empty;
-
-					if (SorcererSkills.Contains(SorcererSkillsUserInput.ToLower()))
-					{
-						ClassSkillsList.Add(SorcererSkillsUserInput);
-					}
+					ListSkills.Add(ClassSkillsReturnString);
 				}
 
 				break;
@@ -494,15 +425,9 @@ public class StatblockProfenciesClass
 					Console.WriteLine(WarlockSkillsPrint);
 				}
 
-				for (int WarlockskillsCounter = 0; WarlockskillsCounter < 2; WarlockskillsCounter++)
+				foreach (string ClassSkillsReturnString in ClassSkillsReturn(2, WarlockSkills, ListSkills ))
 				{
-
-					string WarlockSkillsUserInput = Console.ReadLine() ?? string.Empty;
-
-					if (WarlockSkills.Contains(WarlockSkillsUserInput.ToLower()))
-					{
-						ClassSkillsList.Add(WarlockSkillsUserInput);
-					}
+					ListSkills.Add(ClassSkillsReturnString);
 				}
 
 				break;
@@ -518,15 +443,9 @@ public class StatblockProfenciesClass
 					Console.WriteLine(WizardSkillsPrint);
 				}
 
-				for (int WizardskillsCounter = 0; WizardskillsCounter < 2; WizardskillsCounter++)
+				foreach (string ClassSkillsReturnString in ClassSkillsReturn(2, WizardSkills, ListSkills ))
 				{
-
-					string WizardSkillsUserInput = Console.ReadLine() ?? string.Empty;
-
-					if (WizardSkills.Contains(WizardSkillsUserInput.ToLower()))
-					{
-						ClassSkillsList.Add(WizardSkillsUserInput);
-					}
+					ListSkills.Add(ClassSkillsReturnString);
 				}
 
 				break;
@@ -547,15 +466,9 @@ public class StatblockProfenciesClass
 						Console.WriteLine(BarbarianSkillsPrint);
 					}
 
-					for (int BarbarianskillsCounter = 0; BarbarianskillsCounter < 2; BarbarianskillsCounter++)
+					foreach (string ClassSkillsReturnString in ClassSkillsReturn(2, BarbarianSkills, ListSkills ))
 					{
-
-						string BarbarianSkillsUserInput = Console.ReadLine() ?? string.Empty;
-
-						if (BarbarianSkills.Contains(BarbarianSkillsUserInput.ToLower()))
-						{
-							ClassSkillsList.Add(BarbarianSkillsUserInput);
-						}
+						ListSkills.Add(ClassSkillsReturnString);
 					}
 
 					break;
@@ -574,15 +487,9 @@ public class StatblockProfenciesClass
 						Console.WriteLine(BardSkillsPrint);
 					}
 
-					for (int BardnskillsCounter = 0; BardnskillsCounter < 2; BardnskillsCounter++)
+					foreach (string ClassSkillsReturnString in ClassSkillsReturn(2, BardSkills, ListSkills ))
 					{
-
-						string BarbarianSkillsUserInput = Console.ReadLine() ?? string.Empty;
-
-						if (BardSkills.Contains(BarbarianSkillsUserInput.ToLower()))
-						{
-							ClassSkillsList.Add(BarbarianSkillsUserInput);
-						}
+						ListSkills.Add(ClassSkillsReturnString);
 					}
 
 					break;
@@ -598,15 +505,9 @@ public class StatblockProfenciesClass
 						Console.WriteLine(ClericSkillsPrint);
 					}
 
-					for (int ClericSkillsCounter = 0; ClericSkillsCounter < 2; ClericSkillsCounter++)
+					foreach (string ClassSkillsReturnString in ClassSkillsReturn(2, ClericSkills, ListSkills ))
 					{
-
-						string ClericSkillsUserInput = Console.ReadLine() ?? string.Empty;
-
-						if (ClericSkills.Contains(ClericSkillsUserInput.ToLower()))
-						{
-							ClassSkillsList.Add(ClericSkillsUserInput);
-						}
+						ListSkills.Add(ClassSkillsReturnString);
 					}
 
 					break;
@@ -623,15 +524,9 @@ public class StatblockProfenciesClass
 						Console.WriteLine(DruidSkillsPrint);
 					}
 
-					for (int DruidskillsCounter = 0; DruidskillsCounter < 2; DruidskillsCounter++)
+					foreach (string ClassSkillsReturnString in ClassSkillsReturn(2, DruidSkills, ListSkills ))
 					{
-
-						string DruidSkillsUserInput = Console.ReadLine() ?? string.Empty;
-
-						if (DruidSkills.Contains(DruidSkillsUserInput.ToLower()))
-						{
-							ClassSkillsList.Add(DruidSkillsUserInput);
-						}
+						ListSkills.Add(ClassSkillsReturnString);
 					}
 
 					break;
@@ -648,15 +543,9 @@ public class StatblockProfenciesClass
 						Console.WriteLine(FighterSkillsPrint);
 					}
 
-					for (int FighterskillsCounter = 0; FighterskillsCounter < 2; FighterskillsCounter++)
+					foreach (string ClassSkillsReturnString in ClassSkillsReturn(2, FighterSkills, ListSkills ))
 					{
-
-						string FighterSkillsUserInput = Console.ReadLine() ?? string.Empty;
-
-						if (FighterSkills.Contains(FighterSkillsUserInput.ToLower()))
-						{
-							ClassSkillsList.Add(FighterSkillsUserInput);
-						}
+						ListSkills.Add(ClassSkillsReturnString);
 					}
 
 					break;
@@ -672,15 +561,9 @@ public class StatblockProfenciesClass
 						Console.WriteLine(MonkSkillsPrint);
 					}
 
-					for (int MonkskillsCounter = 0; MonkskillsCounter < 2; MonkskillsCounter++)
+					foreach (string ClassSkillsReturnString in ClassSkillsReturn(2, MonkSkills, ListSkills ))
 					{
-
-						string MonkSkillsUserInput = Console.ReadLine() ?? string.Empty;
-
-						if (MonkSkills.Contains(MonkSkillsUserInput.ToLower()))
-						{
-							ClassSkillsList.Add(MonkSkillsUserInput);
-						}
+						ListSkills.Add(ClassSkillsReturnString);
 					}
 
 					break;
@@ -696,15 +579,9 @@ public class StatblockProfenciesClass
 						Console.WriteLine(PaladinSkillsPrint);
 					}
 
-					for (int PaladinskillsCounter = 0; PaladinskillsCounter < 2; PaladinskillsCounter++)
+					foreach (string ClassSkillsReturnString in ClassSkillsReturn(2, PaladinSkills, ListSkills ))
 					{
-
-						string PaladinSkillsUserInput = Console.ReadLine() ?? string.Empty;
-
-						if (PaladinSkills.Contains(PaladinSkillsUserInput.ToLower()))
-						{
-							ClassSkillsList.Add(PaladinSkillsUserInput);
-						}
+						ListSkills.Add(ClassSkillsReturnString);
 					}
 
 					break;
@@ -721,15 +598,9 @@ public class StatblockProfenciesClass
 						Console.WriteLine(RangerSkillsPrint);
 					}
 
-					for (int RangerskillsCounter = 0; RangerskillsCounter < 2; RangerskillsCounter++)
+					foreach (string ClassSkillsReturnString in ClassSkillsReturn(2, RangerSkills, ListSkills ))
 					{
-
-						string RangerSkillsUserInput = Console.ReadLine() ?? string.Empty;
-
-						if (RangerSkills.Contains(RangerSkillsUserInput.ToLower()))
-						{
-							ClassSkillsList.Add(RangerSkillsUserInput);
-						}
+						ListSkills.Add(ClassSkillsReturnString);
 					}
 
 					break;
@@ -746,15 +617,9 @@ public class StatblockProfenciesClass
 						Console.WriteLine(RogueSkillsPrint);
 					}
 
-					for (int RogueskillsCounter = 0; RogueskillsCounter < 2; RogueskillsCounter++)
+					foreach (string ClassSkillsReturnString in ClassSkillsReturn(2, RogueSkills, ListSkills ))
 					{
-
-						string BarbarianSkillsUserInput = Console.ReadLine() ?? string.Empty;
-
-						if (RogueSkills.Contains(BarbarianSkillsUserInput.ToLower()))
-						{
-							ClassSkillsList.Add(BarbarianSkillsUserInput);
-						}
+						ListSkills.Add(ClassSkillsReturnString);
 					}
 
 					break;
@@ -770,15 +635,9 @@ public class StatblockProfenciesClass
 						Console.WriteLine(SorcererSkillsPrint);
 					}
 
-					for (int SorcererskillsCounter = 0; SorcererskillsCounter < 2; SorcererskillsCounter++)
+					foreach (string ClassSkillsReturnString in ClassSkillsReturn(2, SorcererSkills, ListSkills ))
 					{
-
-						string SorcererSkillsUserInput = Console.ReadLine() ?? string.Empty;
-
-						if (SorcererSkills.Contains(SorcererSkillsUserInput.ToLower()))
-						{
-							ClassSkillsList.Add(SorcererSkillsUserInput);
-						}
+						ListSkills.Add(ClassSkillsReturnString);
 					}
 
 					break;
@@ -794,15 +653,9 @@ public class StatblockProfenciesClass
 						Console.WriteLine(WarlockSkillsPrint);
 					}
 
-					for (int WarlockskillsCounter = 0; WarlockskillsCounter < 2; WarlockskillsCounter++)
+					foreach (string ClassSkillsReturnString in ClassSkillsReturn(2, WarlockSkills, ListSkills ))
 					{
-
-						string WarlockSkillsUserInput = Console.ReadLine() ?? string.Empty;
-
-						if (WarlockSkills.Contains(WarlockSkillsUserInput.ToLower()))
-						{
-							ClassSkillsList.Add(WarlockSkillsUserInput);
-						}
+						ListSkills.Add(ClassSkillsReturnString);
 					}
 
 					break;
@@ -818,19 +671,45 @@ public class StatblockProfenciesClass
 						Console.WriteLine(WizardSkillsPrint);
 					}
 
-					for (int WizardskillsCounter = 0; WizardskillsCounter < 2; WizardskillsCounter++)
+					foreach (string ClassSkillsReturnString in ClassSkillsReturn(2, WizardSkills, ListSkills ))
 					{
-
-						string WizardSkillsUserInput = Console.ReadLine() ?? string.Empty;
-
-						if (WizardSkills.Contains(WizardSkillsUserInput.ToLower()))
-						{
-							ClassSkillsList.Add(WizardSkillsUserInput);
-						}
+						ListSkills.Add(ClassSkillsReturnString);
 					}
 					break;
 			}
 		}
 		return ClassSkillsList; 
+	}
+
+	private List<string> ClassSkillsReturn(int numSkills, ImmutableArray<string> classSkills, List<string> currentskills)
+	{
+		List<string> ReturnSkills = new ();
+		for (int skillsCounter = 0; skillsCounter < numSkills; skillsCounter++)
+		{
+			string SkillsUserInput = Console.ReadLine() ?? string.Empty;
+
+			if (currentskills.Contains(SkillsUserInput?.ToLower() ?? string.Empty))
+			{
+				if (classSkills.Contains(SkillsUserInput.ToLower()))
+				{
+					skillsCounter--;
+					Console.WriteLine("You already have that skill, enter another skill");
+				}
+
+				else
+				{
+					Console.WriteLine("your skills has been added");
+					ReturnSkills.Add(SkillsUserInput.ToLower());
+				}
+			}
+
+			else
+			{
+				skillsCounter--;
+				Console.WriteLine("that isn't an ability score");
+			}
+		}
+
+		return ReturnSkills;
 	}
 }
