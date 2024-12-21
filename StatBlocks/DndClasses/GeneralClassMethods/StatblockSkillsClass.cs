@@ -11,13 +11,13 @@ public class StatblockProfenciesClass
 	{
 		Dictionary<string, object> Proficiencies = new()
 		{
-			{"skills", SkillsGeneratorMethod(background, dndclass, race, level) }
+			{"skills", SkillsGeneratorMethod(background, dndclass, race, level, true) }
 		};
 		return Proficiencies;
 	}
 
 	public Dictionary<string, int> SkillsGeneratorMethod(string background, List<string> dndclass, string race,
-		List<int> level, bool SkilledCheck)
+		List<int> level, bool skilledCheck)
 	{
 		List<string> Skills = new();
 		
@@ -52,7 +52,9 @@ public class StatblockProfenciesClass
 			Skills.Add(ClassSkillsString);
 		}
 		
-		if (SkilledCheck)
+		/*here we check if the character has the feat skilled, which grants the user 3 skills
+		 we then ask the user to input those three skills, and check they haven't already got those skills*/
+		if (skilledCheck)
 		{
 			ImmutableArray<string> SkilledSkills =
 			[
@@ -64,6 +66,7 @@ public class StatblockProfenciesClass
 
 			for (int SkilledSkillIndex = 0; SkilledSkillIndex < 3; SkilledSkillIndex++)
 			{
+				Console.WriteLine("enter a skill\n");
 				string SkilledSkilllInput = Console.ReadLine()!.ToLower();
 
 				if (SkilledSkills.Contains(SkilledSkilllInput))
@@ -95,7 +98,10 @@ public class StatblockProfenciesClass
 		{
 			StatblockSkillsDictionary.Add(SkillsToStatblockDictionary, ProfBonus);
 		}
+		
+		Skills.Sort();
 
+		/*here we are adding expertise to skills*/
 		foreach (string DndClassCounter in dndclass)
 		{
 			if (DndClassCounter == "rogue")
@@ -109,15 +115,16 @@ public class StatblockProfenciesClass
 
 				for (int RogueExpertiseRepeats = 0; RogueExpertiseRepeats < 2; RogueExpertiseRepeats++)
 				{
-					string RogueExpertiseUserInput = Console.ReadLine().ToLower();
+					string RogueExpertiseUserInput = Console.ReadLine()!.ToLower();
 
 					if (Skills.Contains(RogueExpertiseUserInput))
 					{
 						StatblockSkillsDictionary[RogueExpertiseUserInput] *= 2;
+						Skills.Remove(RogueExpertiseUserInput);
 					}
 				}
 				
-				if (level[dndclass.IndexOf(DndClassCounter)] <= 10)
+				if (level[dndclass.IndexOf(DndClassCounter)] >= 10)
 				{
 					Console.WriteLine("enter two ability scores that you want expertise in");
 
@@ -128,6 +135,7 @@ public class StatblockProfenciesClass
 						if (Skills.Contains(RogueExpertiseUserInput))
 						{
 							StatblockSkillsDictionary[RogueExpertiseUserInput] *= 2;
+							Skills.Remove(RogueExpertiseUserInput);
 						}
 					}
 				}
@@ -140,7 +148,7 @@ public class StatblockProfenciesClass
 					Console.WriteLine(SkillsCounter);
 				}
 
-				if (level[dndclass.IndexOf(DndClassCounter)] <= 3)
+				if (level[dndclass.IndexOf(DndClassCounter)] >= 3)
 				{
 					Console.WriteLine("enter two ability scores that you want expertise in");
 
@@ -161,7 +169,7 @@ public class StatblockProfenciesClass
 					}
 				}
 				
-				if (level[dndclass.IndexOf(DndClassCounter)] <= 10)
+				if (level[dndclass.IndexOf(DndClassCounter)] >= 10)
 				{
 					Console.WriteLine("enter two ability scores that you want expertise in");
 
