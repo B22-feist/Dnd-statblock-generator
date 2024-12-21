@@ -10,16 +10,17 @@ namespace MainFunction {
 	{
 		static void Main()
 		{
-			AbilityScoreClass Testing = new AbilityScoreClass();
-			
-			List<int> inputList = [8, 10];
-			List<string> Classinput = ["bard", "rouge"];
+			StatblockProfenciesClass Testing = new();
 
-			Dictionary<String, object> TestingDic = Testing.StatBlockGeneratorAbilityScoresModifiers(inputList, "HalfOrc", Classinput);
+			List<string> Classes = ["wizard"];
 
-			foreach (var VARIABLE in TestingDic)
+			List<int> levels = [10];
+
+			Dictionary<string, int> OutPut = Testing.SkillsGeneratorMethod("acolyte ", Classes, "half orc", levels, false);
+
+			foreach (string Skill in OutPut.Keys)
 			{
-				Console.WriteLine(VARIABLE);
+				Console.WriteLine(Skill);
 			}
 		}
 	}
