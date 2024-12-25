@@ -13,13 +13,13 @@ class Program
 	{
 		StatblockProfenciesClass Testing = new();
 
-		List<string> Classes = ["bard"];
+		List<string> Classes = ["barbarian"];
 
-		List<int> levels = [3];
+		List<int> levels = [4];
 
-		Dictionary<string, int> OutPut = Testing.SkillsGeneratorMethod("acolyte ", Classes, "half orc", levels, false);
+		Dictionary<string, object> OutPut = Testing.ProfenciesMethod("acolyte ", Classes, "half orc", levels);
 
-		foreach (KeyValuePair<string, int> Skill in OutPut)
+		foreach (KeyValuePair<string, object> Skill in OutPut)
 		{
 			Console.WriteLine(Skill);
 		}

@@ -1,4 +1,7 @@
 using System.Collections.Immutable;
+using System.Collections.Specialized;
+using System.Configuration;
+using System.Diagnostics;
 
 namespace MainFunction.StatBlocks.DndClasses.GeneralClassMethods;
 
@@ -11,12 +14,13 @@ public class StatblockProfenciesClass
 	{
 		Dictionary<string, object> Proficiencies = new()
 		{
-			{"skills", SkillsGeneratorMethod(background, dndclass, race, level, true) }
+			{"skills", SkillsGeneratorMethod(background, dndclass, race, level, false) },
+			{"saving throws", SavingThrowsGenerator(dndclass, level)}
 		};
 		return Proficiencies;
 	}
 
-	public Dictionary<string, int> SkillsGeneratorMethod(string background, List<string> dndclass, string race,
+	private Dictionary<string, int> SkillsGeneratorMethod(string background, List<string> dndclass, string race,
 		List<int> level, bool skilledCheck)
 	{
 		List<string> Skills = new();
@@ -59,10 +63,16 @@ public class StatblockProfenciesClass
 			ImmutableArray<string> SkilledSkills =
 			[
 				"acrobatics", "animal handling", "arcana", "athletics", "deception", "history", "insight",
-				"intimidation",
-				"investigation", "medicine", "nature", "perception", "performance", "persuasion", "religion",
-				"sleight of hand", "stealth", "survival"
+				"intimidation", "investigation", "medicine", "nature", "perception", "performance", "persuasion", 
+				"religion", "sleight of hand", "stealth", "survival"
 			];
+			
+			Console.WriteLine("here are your possible ability scores");
+
+			foreach (string SkilledSkillsPrintString in  SkilledSkills)
+			{
+				Console.WriteLine(SkilledSkillsPrintString);
+			}
 
 			for (int SkilledSkillIndex = 0; SkilledSkillIndex < 3; SkilledSkillIndex++)
 			{
@@ -834,7 +844,7 @@ public class StatblockProfenciesClass
 
 				else
 				{
-					Console.WriteLine("your skills has been added\n");
+					Console.WriteLine("your skill has been added");
 					ReturnSkills.Add(SkillsUserInput.ToLower());
 				}
 			}
@@ -849,8 +859,229 @@ public class StatblockProfenciesClass
 		return ReturnSkills;
 	}
 
-	private List<string> SavingThrowsGenerator()
+	private List<string> SavingThrowsGenerator(List<string> classes, List<int> level)
 	{
-		return null;
+		List<string> ReturnList = new();
+
+		switch (classes[0].ToLower())
+		{
+			case "barbarian":
+				ReturnList.Add("str");
+				ReturnList.Add("con");
+				break;
+			
+			case "bard":
+				ReturnList.Add("dex");
+				ReturnList.Add("chr");
+				break;
+			
+			case "cleric":
+				ReturnList.Add("wis");
+				ReturnList.Add("chr");
+				break;
+			
+			case "druid":
+				ReturnList.Add("int");
+				ReturnList.Add("wis");
+				break;
+			
+			case "fighter":
+				ReturnList.Add("str");
+				ReturnList.Add("con");
+				break;
+			
+			case "monk":
+				ReturnList.Add("str");
+				ReturnList.Add("dex");
+				break;
+			
+			case "paladin":
+				ReturnList.Add("wis");
+				ReturnList.Add("chr");
+				break;
+			
+			case "ranger":
+				ReturnList.Add("str");
+				ReturnList.Add("dex");
+				break;
+			
+			case "rogue":
+				ReturnList.Add("dex");
+				ReturnList.Add("int");
+				break;
+			
+			case "sorcerer":
+				ReturnList.Add("con");
+				ReturnList.Add("chr");
+				break;
+			
+			case "warlock":
+				ReturnList.Add("wis");
+				ReturnList.Add("chr");
+				break;
+			
+			case "wizard":
+				ReturnList.Add("int");
+				ReturnList.Add("wis");
+				break;
+		}
+
+		for (int SavingThrowsGeneratorCounter = 0; SavingThrowsGeneratorCounter < classes.Count; SavingThrowsGeneratorCounter++)
+		{
+			switch (classes[SavingThrowsGeneratorCounter].ToLower())
+			{
+				case "monk":
+					if (level[SavingThrowsGeneratorCounter] >= 14)
+					{
+						ReturnList.Add("con");
+						ReturnList.Add("int");
+						ReturnList.Add("wis");
+						ReturnList.Add("chr");
+					}
+					break;
+				
+				case "rogue":
+					if (level[SavingThrowsGeneratorCounter] >= 15)
+					{
+						ReturnList.Add("wis");
+					}
+					break;
+				
+			}
+		}
+		
+		return ReturnList;
+	}
+
+	private List<string> ToolsProficienciesGenerator(List<string> classes, string background, List<string> feats,
+		string race)
+	{
+		List<string> ToolsProficiencies = new();
+
+
+		ImmutableArray<string> RaceProficiencies;
+		switch (race.ToLower())
+		{
+			case "Hill dwarf":
+				RaceProficiencies = ["smith's tools", "brewer's supplies", "mason's tools"];
+
+				while (true)
+				{
+					foreach (string DwarfProficiencyString in RaceProficiencies)
+					{
+						Console.WriteLine(DwarfProficiencyString);
+					}
+
+					Console.WriteLine("pick one of these tools for your tool profiency");
+
+					string DwarfToolProficienciesInput = Console.ReadLine()!;
+
+					if (!ToolsProficiencies.Contains(DwarfToolProficienciesInput))
+					{
+						if (RaceProficiencies.Contains(DwarfToolProficienciesInput))
+						{
+							ToolsProficiencies.Add(DwarfToolProficienciesInput);
+							Console.WriteLine("your input has been recorded");
+							break;
+						}
+
+						else
+						{
+							Console.WriteLine("That isn't a tool proficiency that dwarfs have");
+						}
+					}
+
+					else
+					{
+						Console.WriteLine("You already have that tool proficiency");
+					}
+				}
+
+				break;
+			
+			case "Mountain dwarf":
+				RaceProficiencies = ["smith's tools", "brewer's supplies", "mason's tools"];
+
+				while (true)
+				{
+					foreach (string DwarfProficiencyString in RaceProficiencies)
+					{
+						Console.WriteLine(DwarfProficiencyString);
+					}
+
+					Console.WriteLine("pick one of these tools for your tool profiency");
+
+					string DwarfToolProficienciesInput = Console.ReadLine()!;
+
+					if (!ToolsProficiencies.Contains(DwarfToolProficienciesInput))
+					{
+						if (RaceProficiencies.Contains(DwarfToolProficienciesInput))
+						{
+							ToolsProficiencies.Add(DwarfToolProficienciesInput);
+							Console.WriteLine("your input has been recorded");
+							break;
+						}
+
+						else
+						{
+							Console.WriteLine("That isn't a tool proficiency that dwarfs have");
+						}
+					}
+
+					else
+					{
+						Console.WriteLine("You already have that tool proficiency");
+					}
+				}
+
+				break;
+			
+			case "rock gnome":
+				ToolsProficiencies.Add("tinker tools");
+				break;
+		}
+
+		foreach (string ClassesString in classes)
+		{
+			switch (ClassesString.ToLower())
+			{
+				case "bard":
+					ImmutableArray<string> BardInstruments = ["bagpipes", "drum", "dulcimer", "flute", "lute", "lyre", "horn", "pan flute", "shawm", "viol"];
+					
+					Console.WriteLine("pick three instruments for your tools");
+
+					foreach (string BardInstrumentString in BardInstruments)
+					{
+						Console.WriteLine(BardInstrumentString);
+					}
+
+					for (int BardInstrumentCounter = 0; BardInstrumentCounter < 3; BardInstrumentCounter++)
+					{
+						string BardInstrumentInput = Console.ReadLine()!;
+
+						if (!ToolsProficiencies.Contains(BardInstrumentInput))
+						{
+							if (BardInstruments.Contains(BardInstrumentInput))
+							{
+								ToolsProficiencies.Add(BardInstrumentInput);
+							}
+
+							else
+							{
+								Console.WriteLine("that isn't an instrument");
+							}
+						}
+
+						else
+						{
+							Console.WriteLine("You already have that instrument");
+						}
+					}
+
+					break;
+			}
+		}
+		
+		return ToolsProficiencies;
 	}
 }

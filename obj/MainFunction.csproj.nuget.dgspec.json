@@ -1,18 +1,19 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Bruno\\dndsoftware\\MainFunction.csproj": {}
+    "C:\\Users\\Bruno\\DndSoftware\\MainFunction.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Bruno\\dndsoftware\\MainFunction.csproj": {
+    "C:\\Users\\Bruno\\DndSoftware\\MainFunction.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Bruno\\dndsoftware\\MainFunction.csproj",
+        "projectUniqueName": "C:\\Users\\Bruno\\DndSoftware\\MainFunction.csproj",
         "projectName": "MainFunction",
-        "projectPath": "C:\\Users\\Bruno\\dndsoftware\\MainFunction.csproj",
+        "projectPath": "C:\\Users\\Bruno\\DndSoftware\\MainFunction.csproj",
         "packagesPath": "C:\\Users\\Bruno\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Bruno\\dndsoftware\\obj\\",
+        "outputPath": "C:\\Users\\Bruno\\DndSoftware\\obj\\",
         "projectStyle": "PackageReference",
+        "UsingMicrosoftNETSdk": false,
         "configFilePaths": [
           "C:\\Users\\Bruno\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
@@ -37,8 +38,7 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "all"
-        },
-        "SdkAnalysisLevel": "9.0.100"
+        }
       },
       "frameworks": {
         "net9.0": {
