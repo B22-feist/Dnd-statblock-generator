@@ -1,7 +1,4 @@
 using System.Collections.Immutable;
-using System.Collections.Specialized;
-using System.Configuration;
-using System.Diagnostics;
 
 namespace MainFunction.StatBlocks.DndClasses.GeneralClassMethods;
 
@@ -77,9 +74,9 @@ public class StatblockProfenciesClass
 			for (int SkilledSkillIndex = 0; SkilledSkillIndex < 3; SkilledSkillIndex++)
 			{
 				Console.WriteLine("enter a skill\n");
-				string SkilledSkilllInput = Console.ReadLine()!.ToLower();
+				string? SkilledSkilllInput = Console.ReadLine()?.ToLower();
 
-				if (SkilledSkills.Contains(SkilledSkilllInput))
+				if (SkilledSkilllInput != null && SkilledSkills.Contains(SkilledSkilllInput))
 				{
 					if (!Skills.Contains(SkilledSkilllInput))
 					{
@@ -125,9 +122,9 @@ public class StatblockProfenciesClass
 
 				for (int RogueExpertiseRepeats = 0; RogueExpertiseRepeats < 2; RogueExpertiseRepeats++)
 				{
-					string RogueExpertiseUserInput = Console.ReadLine()!.ToLower();
+					string? RogueExpertiseUserInput = Console.ReadLine()?.ToLower();
 
-					if (Skills.Contains(RogueExpertiseUserInput))
+					if (RogueExpertiseUserInput != null && Skills.Contains(RogueExpertiseUserInput))
 					{
 						StatblockSkillsDictionary[RogueExpertiseUserInput] *= 2;
 						Skills.Remove(RogueExpertiseUserInput);
@@ -140,9 +137,9 @@ public class StatblockProfenciesClass
 
 					for (int RogueExpertiseRepeats = 0; RogueExpertiseRepeats < 2; RogueExpertiseRepeats++)
 					{
-						string RogueExpertiseUserInput = Console.ReadLine()!.ToLower();
+						string? RogueExpertiseUserInput = Console.ReadLine()?.ToLower();
 
-						if (Skills.Contains(RogueExpertiseUserInput))
+						if (RogueExpertiseUserInput != null && Skills.Contains(RogueExpertiseUserInput))
 						{
 							StatblockSkillsDictionary[RogueExpertiseUserInput] *= 2;
 							Skills.Remove(RogueExpertiseUserInput);
@@ -164,9 +161,9 @@ public class StatblockProfenciesClass
 
 					for (int BardExpertiseRepeats = 0; BardExpertiseRepeats < 2; BardExpertiseRepeats++)
 					{
-						string BardExpertiseUserInput = Console.ReadLine()!.ToLower();
+						string? BardExpertiseUserInput = Console.ReadLine()?.ToLower();
 
-						if (Skills.Contains(BardExpertiseUserInput))
+						if (BardExpertiseUserInput != null && Skills.Contains(BardExpertiseUserInput))
 						{
 							StatblockSkillsDictionary[BardExpertiseUserInput] *= 2;
 							Skills.Remove(BardExpertiseUserInput);
@@ -185,9 +182,9 @@ public class StatblockProfenciesClass
 
 					for (int BardExpertiseRepeats = 0; BardExpertiseRepeats < 2; BardExpertiseRepeats++)
 					{
-						string BardExpertiseUserInput = Console.ReadLine()!.ToLower();
+						string? BardExpertiseUserInput = Console.ReadLine()?.ToLower();
 
-						if (Skills.Contains(BardExpertiseUserInput))
+						if (BardExpertiseUserInput != null && Skills.Contains(BardExpertiseUserInput))
 						{
 							StatblockSkillsDictionary[BardExpertiseUserInput] *= 2;
 							Skills.Remove(BardExpertiseUserInput);
@@ -231,7 +228,7 @@ public class StatblockProfenciesClass
 
 					if (Skills.Contains(UserRaceSkillsinput?.ToLower() ?? string.Empty))
 					{
-						if (listSkills.Contains(UserRaceSkillsinput!.ToLower()))
+						if (UserRaceSkillsinput != null && listSkills.Contains(UserRaceSkillsinput.ToLower()))
 						{
 							VariantHumanSkillsCounter--;
 							Console.WriteLine("You already have that skill, enter another skill\n");
@@ -239,7 +236,7 @@ public class StatblockProfenciesClass
 
 						else
 						{
-							SubraceSkills.Add(UserRaceSkillsinput.ToLower());
+							if (UserRaceSkillsinput != null) SubraceSkills.Add(UserRaceSkillsinput.ToLower());
 						}
 					}
 				}
@@ -256,7 +253,7 @@ public class StatblockProfenciesClass
 					Console.WriteLine("enter in a skills\n");
 					string? UserRaceSkillsinput = Console.ReadLine();
 
-					if (Skills.Contains(UserRaceSkillsinput!.ToLower()))
+					if (UserRaceSkillsinput != null && Skills.Contains(UserRaceSkillsinput.ToLower()))
 					{
 						if (listSkills.Contains(UserRaceSkillsinput.ToLower()))
 						{
@@ -834,7 +831,7 @@ public class StatblockProfenciesClass
 			Console.WriteLine("\nenter an ability score");
 			string? SkillsUserInput = Console.ReadLine() ;
 
-			if (classSkills.Contains(SkillsUserInput!.ToLower()))
+			if (SkillsUserInput != null && classSkills.Contains(SkillsUserInput.ToLower()))
 			{
 				if (currentskills.Contains(SkillsUserInput.ToLower()) || ReturnSkills.Contains(SkillsUserInput.ToLower()))
 				{
@@ -953,13 +950,13 @@ public class StatblockProfenciesClass
 		return ReturnList;
 	}
 
-	private List<string> ToolsProficienciesGenerator(List<string> classes, string background, List<string> feats,
+	private List<string?> ToolsProficienciesGenerator(List<string> classes, string background, List<string> feats,
 		string race)
 	{
-		List<string> ToolsProficiencies = new();
+		List<string?> ToolsProficiencies = new();
 
 
-		ImmutableArray<string> RaceProficiencies;
+		ImmutableArray<string?> RaceProficiencies;
 		switch (race.ToLower())
 		{
 			case "Hill dwarf":
@@ -967,14 +964,14 @@ public class StatblockProfenciesClass
 
 				while (true)
 				{
-					foreach (string DwarfProficiencyString in RaceProficiencies)
+					foreach (string? DwarfProficiencyString in RaceProficiencies)
 					{
 						Console.WriteLine(DwarfProficiencyString);
 					}
 
 					Console.WriteLine("pick one of these tools for your tool profiency");
 
-					string DwarfToolProficienciesInput = Console.ReadLine()!;
+					string? DwarfToolProficienciesInput = Console.ReadLine();
 
 					if (!ToolsProficiencies.Contains(DwarfToolProficienciesInput))
 					{
@@ -1004,14 +1001,14 @@ public class StatblockProfenciesClass
 
 				while (true)
 				{
-					foreach (string DwarfProficiencyString in RaceProficiencies)
+					foreach (string? DwarfProficiencyString in RaceProficiencies)
 					{
 						Console.WriteLine(DwarfProficiencyString);
 					}
 
 					Console.WriteLine("pick one of these tools for your tool profiency");
 
-					string DwarfToolProficienciesInput = Console.ReadLine()!;
+					string? DwarfToolProficienciesInput = Console.ReadLine();
 
 					if (!ToolsProficiencies.Contains(DwarfToolProficienciesInput))
 					{
@@ -1057,9 +1054,9 @@ public class StatblockProfenciesClass
 
 					for (int BardInstrumentCounter = 0; BardInstrumentCounter < 3; BardInstrumentCounter++)
 					{
-						string BardInstrumentInput = Console.ReadLine()!;
+						string? BardInstrumentInput = Console.ReadLine();
 
-						if (!ToolsProficiencies.Contains(BardInstrumentInput))
+						if (BardInstrumentInput != null && !ToolsProficiencies.Contains(BardInstrumentInput))
 						{
 							if (BardInstruments.Contains(BardInstrumentInput))
 							{
@@ -1076,6 +1073,74 @@ public class StatblockProfenciesClass
 						{
 							Console.WriteLine("You already have that instrument");
 						}
+					}
+
+					break;
+				
+				case "druid":
+					ToolsProficiencies.Add("herbalism kit");
+					break;
+				
+				case "monk":
+
+					while (true)
+					{
+						Console.WriteLine("Do you want an instrument or artisan tools");
+						string? InstrumentVsTool = Console.ReadLine();
+
+						if (InstrumentVsTool != null && InstrumentVsTool.ToLower() == "Instrument")
+						{
+							ImmutableArray<string> Instruments = ["bagpipes", "drum", "dulcimer", "flute", "lute", "lyre", "horn", "pan flute", "shawm", "viol"];
+							
+							Console.WriteLine("pick an instrument from:");
+							
+							foreach (string InstrumentForeach in Instruments)
+							{
+								Console.Write($"{InstrumentForeach},");
+							}
+							
+							Console.WriteLine("");
+							
+							string? InstrumentInput = Console.ReadLine().ToLower();
+
+							if (InstrumentInput == null || !Instruments.Contains(InstrumentInput) ||
+							    ToolsProficiencies.Contains(InstrumentInput)) continue;
+							
+							ToolsProficiencies.Add(InstrumentInput);
+							Console.WriteLine("your input has been recorded");
+							break;
+						}
+
+						if (InstrumentVsTool != null && InstrumentVsTool.ToLower() == "tool")
+						{
+							ImmutableArray<string> Tools = ["alchemist's supplies", "brewer's supplies","calligrapher's supplies", "carpenter's tools", "cartographer's tools",
+								"cobbler's tools", "cook's utensils", "glassblower's tools", "jeweler's tools", "leatherworker's tools", "mason's supplies", "painter's supplies",
+								"potter's tools", "smith's tools", "tinker's tools", "weaver's tools", "woodcarver's tools"];
+							
+							Console.WriteLine("pick an instrument from:");
+							
+							foreach (string ToolsForeach in Tools)
+							{
+								Console.Write($"{ToolsForeach},");
+							}
+							
+							Console.WriteLine("");
+							
+							string? InstrumentInput = Console.ReadLine()?.ToLower();
+
+							if (InstrumentInput == null || !Tools.Contains(InstrumentInput) ||
+							    ToolsProficiencies.Contains(InstrumentInput)) continue;
+							
+							ToolsProficiencies.Add(InstrumentInput);
+							Console.WriteLine("your input has been recorded");
+							break;
+						}
+
+						else
+						{
+							Console.WriteLine("your input is null, please pick an instrument or artisan tools");
+						}
+						
 					}
 
 					break;
