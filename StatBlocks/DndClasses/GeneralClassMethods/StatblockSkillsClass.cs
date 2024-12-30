@@ -7,18 +7,19 @@ public class StatblockProfenciesClass
 	/*stat block skills class handles proficiencies and proficiency bonus for a stat block
 	 it takes an argument of background, class, race and level
 	 it handles saving throws, skills, tools, weapons and armour proficiencies and languages */
-	public Dictionary<string, object> ProfenciesMethod(string background, List<string> dndclass, string race, List<int> level )
+	public Dictionary<string, object> ProficienciesMethod(string background, List<string> dndclass, string race, List<int> level )
 	{
 		Dictionary<string, object> Proficiencies = new()
 		{
-			{"skills", SkillsGeneratorMethod(background, dndclass, race, level, false) },
-			{"saving throws", SavingThrowsGenerator(dndclass, level)}
+			{"skills", SkillsGeneratorMethod(background, dndclass, race, level, 0) },
+			{"saving throws", SavingThrowsGenerator(dndclass, level)},
+			{"tools", ToolsProficienciesGenerator(dndclass, background, 0, race)}
 		};
 		return Proficiencies;
 	}
 
 	private Dictionary<string, int> SkillsGeneratorMethod(string background, List<string> dndclass, string race,
-		List<int> level, bool skilledCheck)
+		List<int> level, int feat)
 	{
 		List<string> Skills = new();
 		
@@ -34,14 +35,14 @@ public class StatblockProfenciesClass
 		
 		Dictionary<string, int> StatblockSkillsDictionary = new();
 		
-		List<string> BackGroundSkillList = BackGroundSkills(background);
+		HashSet<string> BackGroundSkillList = BackGroundSkills(background);
 
 		foreach (string BackGroundSkillAdd in BackGroundSkillList)
 		{
 			Skills.Add(BackGroundSkillAdd);
 		}
 		
-		List<string> SubraceSkillsList = SubraceSkills(race, Skills);
+		HashSet<string> SubraceSkillsList = SubraceSkills(race, Skills);
 		
 		foreach (string SubraceSkillAdd in SubraceSkillsList)
 		{
@@ -55,7 +56,7 @@ public class StatblockProfenciesClass
 		
 		/*here we check if the character has the feat skilled, which grants the user 3 skills
 		 we then ask the user to input those three skills, and check they haven't already got those skills*/
-		if (skilledCheck)
+		if (feat != 0)
 		{
 			ImmutableArray<string> SkilledSkills =
 			[
@@ -71,7 +72,7 @@ public class StatblockProfenciesClass
 				Console.WriteLine(SkilledSkillsPrintString);
 			}
 
-			for (int SkilledSkillIndex = 0; SkilledSkillIndex < 3; SkilledSkillIndex++)
+			for (int SkilledSkillIndex = 0; SkilledSkillIndex < feat; SkilledSkillIndex++)
 			{
 				Console.WriteLine("enter a skill\n");
 				string? SkilledSkilllInput = Console.ReadLine()?.ToLower();
@@ -202,9 +203,9 @@ public class StatblockProfenciesClass
 		return StatblockSkillsDictionary;
 		}
 
-	private List<string> SubraceSkills(string race, List<string> listSkills)
+	private HashSet<string> SubraceSkills(string race, List<string> listSkills)
 	{
-		List<string> SubraceSkills = new();
+		HashSet<string> SubraceSkills = new();
 		ImmutableArray<string> Skills =
 		[
 			"acrobatics", "animal handling", "arcana", "athletics", "deception", "history", "insight", "intimidation",
@@ -287,9 +288,9 @@ public class StatblockProfenciesClass
 		return SubraceSkills;
 	}
 
-	private List<string> BackGroundSkills(string background)
+	private HashSet<string> BackGroundSkills(string background)
 	{
-		List<string> BackGroundSkills = new();
+		HashSet<string> BackGroundSkills = new();
 
 		switch (background.ToLower())
 		{
@@ -362,9 +363,9 @@ public class StatblockProfenciesClass
 		return BackGroundSkills;
 	}
 
-	private List<string> ClassSkills(List<string> classes, List<string> listSkills)
+	private HashSet<string> ClassSkills(List<string> classes, List<string> listSkills)
 	{
-		List<string> ClassSkillsList = new();
+		HashSet<string> ClassSkillsList = new();
 		Console.WriteLine("here are you possible abilities\n");
 
 		switch (classes[0].ToLower())
@@ -823,9 +824,9 @@ public class StatblockProfenciesClass
 		return ClassSkillsList; 
 	}
 
-	private List<string> ClassSkillsReturn(int numSkills, ImmutableArray<string> classSkills, List<string> currentskills)
+	private HashSet<string> ClassSkillsReturn(int numSkills, ImmutableArray<string> classSkills, List<string> currentskills)
 	{
-		List<string> ReturnSkills = new ();
+		HashSet<string> ReturnSkills = new ();
 		for (int SkillsCounter = 0; SkillsCounter < numSkills; SkillsCounter++)
 		{
 			Console.WriteLine("\nenter an ability score");
@@ -856,9 +857,9 @@ public class StatblockProfenciesClass
 		return ReturnSkills;
 	}
 
-	private List<string> SavingThrowsGenerator(List<string> classes, List<int> level)
+	private HashSet<string> SavingThrowsGenerator(List<string> classes, List<int> level)
 	{
-		List<string> ReturnList = new();
+		HashSet<string> ReturnList = new();
 
 		switch (classes[0].ToLower())
 		{
@@ -950,12 +951,11 @@ public class StatblockProfenciesClass
 		return ReturnList;
 	}
 
-	private List<string?> ToolsProficienciesGenerator(List<string> classes, string background, List<string> feats,
-		string race)
+	public HashSet<string> ToolsProficienciesGenerator(List<string> classes, string background,
+		string race, int feats)
 	{
-		List<string?> ToolsProficiencies = new();
-
-
+		HashSet<string?> ToolsProficiencies = new();
+		
 		ImmutableArray<string?> RaceProficiencies;
 		switch (race.ToLower())
 		{
@@ -975,7 +975,7 @@ public class StatblockProfenciesClass
 
 					if (!ToolsProficiencies.Contains(DwarfToolProficienciesInput))
 					{
-						if (RaceProficiencies.Contains(DwarfToolProficienciesInput))
+						if (DwarfToolProficienciesInput != null && RaceProficiencies.Contains(DwarfToolProficienciesInput))
 						{
 							ToolsProficiencies.Add(DwarfToolProficienciesInput);
 							Console.WriteLine("your input has been recorded");
@@ -1012,7 +1012,7 @@ public class StatblockProfenciesClass
 
 					if (!ToolsProficiencies.Contains(DwarfToolProficienciesInput))
 					{
-						if (RaceProficiencies.Contains(DwarfToolProficienciesInput))
+						if (DwarfToolProficienciesInput != null && RaceProficiencies.Contains(DwarfToolProficienciesInput))
 						{
 							ToolsProficiencies.Add(DwarfToolProficienciesInput);
 							Console.WriteLine("your input has been recorded");
@@ -1101,7 +1101,7 @@ public class StatblockProfenciesClass
 							
 							Console.WriteLine("");
 							
-							string? InstrumentInput = Console.ReadLine().ToLower();
+							string? InstrumentInput = Console.ReadLine()?.ToLower();
 
 							if (InstrumentInput == null || !Instruments.Contains(InstrumentInput) ||
 							    ToolsProficiencies.Contains(InstrumentInput)) continue;
@@ -1111,7 +1111,7 @@ public class StatblockProfenciesClass
 							break;
 						}
 
-						if (InstrumentVsTool != null && InstrumentVsTool.ToLower() == "tool")
+						if ( InstrumentVsTool != null && InstrumentVsTool.ToLower() == "tool")
 						{
 							ImmutableArray<string> Tools = ["alchemist's supplies", "brewer's supplies","calligrapher's supplies", "carpenter's tools", "cartographer's tools",
 								"cobbler's tools", "cook's utensils", "glassblower's tools", "jeweler's tools", "leatherworker's tools", "mason's supplies", "painter's supplies",
@@ -1144,9 +1144,202 @@ public class StatblockProfenciesClass
 					}
 
 					break;
+				
+				case "rogue":
+					ToolsProficiencies.Add("thieves tools");
+					break;
 			}
 		}
-		
+
+		switch (background.ToLower())
+		{
+			case "charlatan":
+				ToolsProficiencies.Add("disguise kit");
+				ToolsProficiencies.Add("forgery kit");
+				break;
+				
+			case "criminal":
+					ToolsProficiencies.Add("thieves tools");
+
+					ImmutableArray<string> CriminalGamingSets = ["dice set", "dragonchess set", "playing card set", "three-dragon ante set"];
+					
+					/*BackGroundToolProficiencies adds items automatically to Tool Proficiencies as part of the method*/
+					BackgroundToolProficiencies(ToolsProficiencies, CriminalGamingSets);
+					break;
+			
+			case "entertainer":
+				ToolsProficiencies.Add("disguise kit");
+				
+				ImmutableArray<string> EntertainerInstruments = ["bagpipes", "drum", "dulcimer", "flute", "lute", "lyre", "horn", "pan flute", "shawm", "viol"];
+				
+				while (true)
+				{
+					Console.WriteLine("pick one of the instruments to have as a proficiency");
+
+					foreach (string EntertainerInstrumentString in EntertainerInstruments)
+					{
+						Console.Write($"{EntertainerInstrumentString},");
+					}
+					
+					string? EntertainmentInstrumentInput = Console.ReadLine()?.ToLower();
+
+					if (EntertainmentInstrumentInput != null && EntertainerInstruments.Contains(EntertainmentInstrumentInput) && !ToolsProficiencies.Contains(EntertainmentInstrumentInput))
+					{
+						ToolsProficiencies.Add(EntertainmentInstrumentInput);
+						Console.WriteLine("Your input has been recorded");
+						break;
+					}
+
+					else
+					{
+						Console.WriteLine("you haven't enter a gaming set, please enter an gaming set");
+					}
+				}
+				
+				break;
+			
+			case "folk hero":
+				ImmutableArray<string> FolkHeroTools = ["alchemist's supplies", "brewer's supplies","calligrapher's supplies", "carpenter's tools", "cartographer's tools",
+					"cobbler's tools", "cook's utensils", "glassblower's tools", "jeweler's tools", "leatherworker's tools", "mason's supplies", "painter's supplies",
+					"potter's tools", "smith's tools", "tinker's tools", "weaver's tools", "woodcarver's tools"];
+
+				ImmutableArray<string> FolkHeroVehicles = ["camel", "donkey", "mule", "elephant", "horse, draft", "horse, riding", "mastiff", "pony", "warhorse",
+				"carriage", "cart", "chariot", "sled", "wagon"];
+
+				/*BackGroundToolProficiencies adds items automatically to Tool Proficiencies as part of the method*/
+				BackgroundToolProficiencies(ToolsProficiencies, FolkHeroTools);
+				
+				BackgroundToolProficiencies(ToolsProficiencies, FolkHeroVehicles);
+				break;
+			
+			case "guild artisan":
+				ImmutableArray<string> GuildArtisanTools = ["alchemist's supplies", "brewer's supplies","calligrapher's supplies", "carpenter's tools", "cartographer's tools",
+					"cobbler's tools", "cook's utensils", "glassblower's tools", "jeweler's tools", "leatherworker's tools", "mason's supplies", "painter's supplies",
+					"potter's tools", "smith's tools", "tinker's tools", "weaver's tools", "woodcarver's tools"];
+				
+				/*BackGroundToolProficiencies adds items automatically to Tool Proficiencies as part of the method*/
+				BackgroundToolProficiencies(ToolsProficiencies, GuildArtisanTools);
+
+				break;
+			
+			case "hermit":
+				ToolsProficiencies.Add("herbalism kit");
+				break;
+			
+			case "noble":
+				ImmutableArray<string> NobleGamingSets = ["dice set", "dragonchess set", "playing card set", "three-dragon ante set"];
+				/*BackGroundToolProficiencies adds items automatically to Tool Proficiencies as part of the method*/
+				BackgroundToolProficiencies(ToolsProficiencies, NobleGamingSets);
+				break;
+			
+			case "outlander":
+				ImmutableArray<string> OutlanderInstruments = ["bagpipes", "drum", "dulcimer", "flute", "lute", "lyre", "horn", "pan flute", "shawm", "viol"];
+				
+				/*BackGroundToolProficiencies adds items automatically to Tool Proficiencies as part of the method*/
+				BackgroundToolProficiencies(ToolsProficiencies, OutlanderInstruments);
+				break;
+			
+			case "sailor":
+				ToolsProficiencies.Add("navigators tools");
+				
+				ImmutableArray<string> SailorVehicles = ["galley", "keelboat", "longship", "rowboat", "sailing ship", "warship"];
+				
+				/*BackGroundToolProficiencies adds items automatically to Tool Proficiencies as part of the method*/
+				BackgroundToolProficiencies(ToolsProficiencies, SailorVehicles);
+				break;
+			
+			case "soldier":
+				ImmutableArray<string> SoliderGamingSets = ["dice set", "dragonchess set", "playing card set", "three-dragon ante set"];
+				
+				ImmutableArray<string> SoliderVehicles = ["camel", "donkey", "mule", "elephant", "horse, draft", "horse, riding", "mastiff", "pony", "warhorse",
+					"carriage", "cart", "chariot", "sled", "wagon"];
+
+				/*BackGroundToolProficiencies adds items automatically to Tool Proficiencies as part of the method*/
+				BackgroundToolProficiencies(ToolsProficiencies, SoliderGamingSets);
+				BackgroundToolProficiencies(ToolsProficiencies, SoliderVehicles);
+				break;
+			
+			case "urchin":
+				ToolsProficiencies.Add("disguise kit");
+				ToolsProficiencies.Add("thieves' tools");
+				break;
+		}
+
+		/*here we check if the character has the feat skilled, which grants the user 3 skills
+		 we then ask the user to input those three skills, and check they haven't already got those skills*/
+		if (feats != 0)
+		{
+			ImmutableArray<string> ToolSkills =
+			[
+				"acrobatics", "animal handling", "arcana", "athletics", "deception", "history", "insight",
+				"intimidation", "investigation", "medicine", "nature", "perception", "performance", "persuasion", 
+				"religion", "sleight of hand", "stealth", "survival"
+			];
+			
+			Console.WriteLine("here are your possible ability scores");
+
+			foreach (string SkilledSkillsPrintString in  ToolSkills)
+			{
+				Console.WriteLine(SkilledSkillsPrintString);
+			}
+
+			for (int ToolSkillIndex = 0; ToolSkillIndex < feats; ToolSkillIndex++)
+			{
+				Console.WriteLine("enter a skill\n");
+				string? ToolSkilllInput = Console.ReadLine()?.ToLower();
+
+				if (ToolSkilllInput != null && ToolSkills.Contains(ToolSkilllInput))
+				{
+					if (!ToolsProficiencies.Contains(ToolSkilllInput))
+					{
+						Console.WriteLine("your input has been recorded");
+						ToolsProficiencies.Add(ToolSkilllInput);
+					}
+
+					else
+					{
+						Console.WriteLine("you already have that skill");
+
+						ToolSkillIndex--;
+					}
+				}
+
+				else
+				{
+					Console.WriteLine("that isn't a skill");
+
+					ToolSkillIndex--;
+				}
+			}
+		}
+
 		return ToolsProficiencies;
+	}
+
+	private void BackgroundToolProficiencies(HashSet<string?> toolsProficiencies, ImmutableArray<string> setOfToolProficiencies )
+	{
+		while (true)
+		{
+			Console.WriteLine("pick one of the gaming sets to have as a proficiency");
+
+			foreach (string SetOfToolProficienciesString in setOfToolProficiencies)
+			{
+				Console.Write($"{SetOfToolProficienciesString},");
+			}
+					
+			string? ToolProficienciesSetInput = Console.ReadLine()?.ToLower();
+
+			if (ToolProficienciesSetInput != null && setOfToolProficiencies.Contains(ToolProficienciesSetInput) && !toolsProficiencies.Contains(ToolProficienciesSetInput))
+			{
+				toolsProficiencies.Add(ToolProficienciesSetInput);
+				Console.WriteLine("Your input has been recorded");
+				break;
+			}
+
+			else
+			{
+				Console.WriteLine("you haven't enter a gaming set, please enter an gaming set");
+			}
+		}
 	}
 }

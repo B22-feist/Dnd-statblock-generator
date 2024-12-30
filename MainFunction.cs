@@ -17,9 +17,9 @@ class Program
 
 		List<int> levels = [4];
 
-		Dictionary<string, object> OutPut = Testing.ProfenciesMethod("acolyte ", Classes, "half orc", levels);
+		HashSet<string> OutPut = Testing.ToolsProficienciesGenerator(Classes, "acolyte",  "elf", 0);
 
-		foreach (KeyValuePair<string, object> Skill in OutPut)
+		foreach (string Skill in OutPut)
 		{
 			Console.WriteLine(Skill);
 		}
