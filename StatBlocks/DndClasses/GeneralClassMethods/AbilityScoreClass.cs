@@ -338,7 +338,7 @@ namespace MainFunction.StatBlocks.DndClasses.GeneralClassMethods
 		 the program then checks if increasing the stat would increase the stat above 20
 		 and if so, doesn't let them
 		 if you would increase the stat above 20, then the stat gets increased*/
-		private List<int> ClassAbilityScoreImprovements(List<int> level, List<string> dndclass, List<int> abilityScores)
+		private void ClassAbilityScoreImprovements(List<int> level, List<string> dndclass, List<int> abilityScores)
 		{
 			for (int DndClassLoop = 0; DndClassLoop < dndclass.Count; DndClassLoop++)
 			{
@@ -363,8 +363,6 @@ namespace MainFunction.StatBlocks.DndClasses.GeneralClassMethods
 						NormalAbilityScoreImprovementLevels);
 				}
 			}
-
-			return abilityScores;
 		}
 
 		private List<int> StatIncreaseClassAbilityScores(int level,  List<int> abilityScores, List<int> abilityScoresImprovementLevels)

@@ -1,4 +1,5 @@
 //using dbStuff;
+using System.Collections;
 using System.Data;
 using MainFunction.Database;
 using MainFunction.MathsFunctions;
@@ -11,17 +12,20 @@ class Program
 {
 	static void Main()
 	{
-		StatblockProfenciesClass Testing = new();
+		StatblockProficienciesClass Testing = new();
 
-		List<string> Classes = ["barbarian"];
+		List<string> Classes = ["barbarian", "wizard"];
 
-		List<int> levels = [4];
-
-		HashSet<string> OutPut = Testing.ToolsProficienciesGenerator(Classes, "acolyte",  "elf", 0);
-
-		foreach (string Skill in OutPut)
+		List<int> Levels = [4,6];
+		
+		StatblockProficienciesClass TestingProficiencies = new();
+		
+		Feats Feats = new()
 		{
-			Console.WriteLine(Skill);
-		}
+			Linguist = false,
+		};
+		
+		TestingProficiencies.ProficienciesMethod("sage", Classes, "elf", Levels, Feats);
+		Console.WriteLine("testing");
 	}
 }
