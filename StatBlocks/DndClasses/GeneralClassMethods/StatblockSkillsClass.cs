@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Immutable;
 
 namespace MainFunction.StatBlocks.DndClasses.GeneralClassMethods;
@@ -9,13 +8,13 @@ public class StatblockProficienciesClass
 	 it takes an argument of background, class, race and level
 	 it handles saving throws, skills, tools, weapons and armour proficiencies and languages
 	 and is spilt across StatBlockskillsClass and  StatBlockskillsClass1*/
-	public Dictionary<string, object> ProficienciesMethod(string background, List<string> dndClass, string race, List<int> level, Feats feats )
+	public Dictionary<string, object> ProficienciesMethod(string background, List<string> dndClass, string race, string subrace, List<int> level, Feats feats )
 	{
-		StatblockProficienciesClass1 OtherHalfStatBlock = new(background, dndClass, race, level, feats);
+		StatblockProficienciesClass1 OtherHalfStatBlock = new(background, dndClass, race, level, feats, subrace);
 		
 		Dictionary<string, object> Proficiencies = new()
 		{
-			{"skills", SkillsGeneratorMethod(background, dndClass, race, level, 0) },
+			{"skills", SkillsGeneratorMethod(background, dndClass, subrace, level, 0, race) },
 			{"saving throws", SavingThrowsGenerator(dndClass, level)},
 			{"tools", OtherHalfStatBlock.ToolsProficiencies},
 			{"languages", OtherHalfStatBlock.LanguagePublic},
@@ -24,8 +23,8 @@ public class StatblockProficienciesClass
 		return Proficiencies;
 	}
 
-	private Dictionary<string, int> SkillsGeneratorMethod(string background, List<string> dndClass, string race,
-		List<int> level, int feat)
+	private Dictionary<string, int> SkillsGeneratorMethod(string background, List<string> dndClass, string subrace,
+		List<int> level, int feat, string race)
 	{
 		List<string> Skills = new();
 		
@@ -48,7 +47,7 @@ public class StatblockProficienciesClass
 			Skills.Add(BackGroundSkillAdd);
 		}
 		
-		HashSet<string> SubraceSkillsList = SubraceSkills(race, Skills);
+		HashSet<string> SubraceSkillsList = SubraceSkills(subrace, Skills);
 		
 		foreach (string SubraceSkillAdd in SubraceSkillsList)
 		{
@@ -205,11 +204,17 @@ public class StatblockProficienciesClass
 				}
 			}
 		}
-		
+
+		if (race != "elf") return StatblockSkillsDictionary;
+		if (!Skills.Contains("perception"))
+		{
+			Skills.Add("perception");
+		}
+
 		return StatblockSkillsDictionary;
 		}
 
-	private HashSet<string> SubraceSkills(string race, List<string> listSkills)
+	private HashSet<string> SubraceSkills(string subrace, List<string> listSkills)
 	{
 		HashSet<string> SubraceSkills = new();
 		ImmutableArray<string> Skills =
@@ -220,7 +225,7 @@ public class StatblockProficienciesClass
 		];
 
 		/*as certain races get different skills */
-		switch (race.ToLower())
+		switch (subrace.ToLower())
 		{
 			case "variant human":
 				foreach (string SkillsStrings in Skills)
@@ -283,13 +288,9 @@ public class StatblockProficienciesClass
 				}
 				break;
 			
-			case "elf":
-				if (!listSkills.Contains("perception"))
-				{
-					SubraceSkills.Add("perception");
-				}
-				break;
 		}
+
+		
 
 		return SubraceSkills;
 	}

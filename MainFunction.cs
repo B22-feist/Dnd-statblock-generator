@@ -12,20 +12,6 @@ class Program
 {
 	static void Main()
 	{
-		StatblockProficienciesClass Testing = new();
 
-		List<string> Classes = ["barbarian", "wizard"];
-
-		List<int> Levels = [4,6];
-		
-		StatblockProficienciesClass TestingProficiencies = new();
-		
-		Feats Feats = new()
-		{
-			Linguist = false,
-		};
-		
-		TestingProficiencies.ProficienciesMethod("sage", Classes, "elf", Levels, Feats);
-		Console.WriteLine("testing");
 	}
 }
