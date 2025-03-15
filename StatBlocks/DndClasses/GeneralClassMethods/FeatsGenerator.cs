@@ -83,4 +83,6 @@ public class Feats
 	public bool WarCaster = false;
 
 	public bool WeaponMaster = false;
+	
+	public bool HeavilyArmoured = false;
 }

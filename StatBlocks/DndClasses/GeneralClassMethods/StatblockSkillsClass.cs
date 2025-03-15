@@ -16,9 +16,10 @@ public class StatblockProficienciesClass
 		{
 			{"skills", SkillsGeneratorMethod(background, dndClass, subrace, level, 0, race) },
 			{"saving throws", SavingThrowsGenerator(dndClass, level)},
-			{"tools", OtherHalfStatBlock.ToolsProficiencies},
+			{"tools", OtherHalfStatBlock.ToolsProficienciesPublic},
 			{"languages", OtherHalfStatBlock.LanguagePublic},
-			{"weapon proficiencies", OtherHalfStatBlock.WeaponProficienciesPublic}
+			{"weapon proficiencies", OtherHalfStatBlock.WeaponProficienciesPublic},
+			{"armour proficiencies", OtherHalfStatBlock.ArmourProficienciesPublic}
 		};
 		return Proficiencies;
 	}
